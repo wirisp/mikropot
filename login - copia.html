@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="expires" content="-1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Apwifi Login</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- two other colors
+
+<body class="lite">
+<body class="dark">
+
+-->
+
+    $(if chap-id)
+    <form name="sendin" action="$(link-login-only)" method="post" style="display:none">
+        <input type="hidden" name="username" />
+        <input type="hidden" name="password" />
+        <input type="hidden" name="dst" value="$(link-orig)" />
+        <input type="hidden" name="popup" value="true" />
+    </form>
+
+    <script src="/md5.js"></script>
+    <!-- INICIA script para transformar minusculas a mayusculas en usuario y password -->
+    <script src="/jquery.min.js"></script>
+    <!-- FIN script para transformar minusculas a mayusculas en usuario y password -->
+    <script>
+        function doLogin() {
+            document.sendin.username.value = document.login.username.value;
+            document.sendin.password.value = hexMD5('$(chap-id)' + document.login.password.value + '$(chap-challenge)');
+            document.sendin.submit();
+            return false;
+        }
+
+    </script>
+    $(endif)
+    <div class="ie-fixMinHeight">
+        <div class="main">
+            <div class="wrap animated fadeIn">
+                <form name="login" action="$(link-login-only)" method="post" $(if chap-id) onSubmit="return doLogin()" $(endif)>
+                    <input type="hidden" name="dst" value="$(link-orig)" />
+                    <input type="hidden" name="popup" value="true" />
+                    <p class="info $(if error)alert$(endif)">
+                        $(if error == "")Ingresa tu Ficha para acceder a internet. $(if trial == 'yes')<br />Free trial available, <a href="$(link-login-only)?dst=$(link-orig-esc)&amp;username=T-$(mac-esc)">click here</a>.$(endif)
+                        $(endif)
+
+                        $(if error)$(error)$(endif)
+                    </p>
+                    <label>
+                        <img class="ico" src="img/user.svg" alt="#" />
+                        <input name="username" type="text" value="$(username)" placeholder="Usuario" />
+                    </label>
+
+                    <label>
+                        <img class="ico" src="img/password.svg" alt="#" />
+                        <input name="password" type="text" placeholder="Clave" />
+                    </label>
+
+                    <input type="submit" value="Conectarme" />
+
+                </form>
+                <style type="text/css">
+.tg  {border-collapse:collapse;border-color:#aaa;border-spacing:0;}
+.tg td{background-color:#fff;border-color:#aaa;border-style:solid;border-width:1px;color:#333;
+  font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg th{background-color:#f38630;border-color:#aaa;border-style:solid;border-width:1px;color:#fff;
+  font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg .tg-amwm{font-weight:bold;text-align:center;vertical-align:top}
+</style>
+<table class="tg">
+<thead>
+  <tr>
+    <th class="tg-amwm">FICHAS</th>
+    <th class="tg-amwm">PRECIO</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td class="tg-amwm">2 HORAS</td>
+    <td class="tg-amwm">10 PESOS</td>
+  </tr>
+  <tr>
+    <td class="tg-amwm">12 HORAS</td>
+    <td class="tg-amwm">30 PESOS</td>
+  </tr>
+</tbody>
+</table>
+                <center><b class="info">Consigue tu Voucher con:</b>
+                <p class="info bt">- Josefina Enriquez(Sn Jose)<br>- Dulce Enriquez(PalmarAlto)<br>- Nohemi Enriquez(PalmarAlto)<br>- Jesus Chucho(Basuche)</p></center>
+
+            </div>
+        </div>
+    </div>
+<!-- Inicia Script a mayusculas los input -->
+<script>
+        $(function() {
+            $('input').keyup(function() {
+                this.value = this.value.toLocaleUpperCase();
+            });
+        });
+    </script>
+<!-- Inicia Script a mayusculas los input -->
+</body>
+
+</html>
