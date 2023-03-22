@@ -59,7 +59,7 @@
 
                     <label>
                         <img class="ico" src="img/password.svg" alt="#" />
-                        <input name="password" type="password" placeholder="Password" id="fname" onblur="UPP();this.value=removeSpaces(this.value);" />
+                        <input name="password" type="text" placeholder="Password" id="fpass" onblur="UPass();this.value=removeSpaces(this.value);" />
                     </label>
 
                     <input type="submit" value="Connect" />
@@ -93,7 +93,7 @@
 </tbody>
 </table>
                 <center><b class="info">Consigue tu Voucher con:</b>
-                <p class="info bt">- Catalina Hervert(Ktis)<br></p></center>
+                <p class="info bt">- Josefina Enriquez<br>- Dulce Enriquez<br>- Nohemi Enriquez<br>- Silvia Enriquez</p></center>
 
             </div>
         </div>
@@ -104,7 +104,12 @@ function UPP() {
     var x = document.getElementById("fname");
     x.value = x.value.toUpperCase();
 }
+function UPass() {
+    var x = document.getElementById("fpass");
 
+    x.value = x.value.toUpperCase();
+
+}
 function removeSpaces(string) {
  return string.split(' ').join('');
 }
